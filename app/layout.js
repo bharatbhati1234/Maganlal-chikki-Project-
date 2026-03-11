@@ -3,6 +3,8 @@ import "./globals.css";
 import TopHeader from "@/components/Top-Header";  // Top Header ko import kiya hai 
 import Header from "@/components/Header"; // Main Header ko import kiya hai 
 import Footer from "@/components/Footer"; // Footer ko import kiya hai 
+import ReduxProvider from "@/store/providers/ReduxProvider";   // Reducer ko import kiya hai store folder me se providers
+import Toast from "@/components/Toast";             // Toast ko import kiya hai 
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,12 +27,19 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       > 
+
+      {/* sab ko ReduxProvider k under rakha hai Redux use kiya hai esliye */}
+
+      <ReduxProvider>          
          <TopHeader/>  {/* Top Header ko call kiya hai  */}
          <Header/>  {/* Main Header ko call kiya hai */}
+         <Toast/>       {/*  Toast ko call kiya hai */}
         
       
-        {children}
-         <Footer/>   {/* Footer ko call kiya hai */}
+          {children}                              
+
+         <Footer/>      {/* Footer ko call kiya hai */}
+        </ReduxProvider>
       </body>
     </html>
   );

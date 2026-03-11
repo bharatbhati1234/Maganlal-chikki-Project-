@@ -25,7 +25,8 @@ export default function Header() {
     { name: "Home", path: "/" },
     { name: "About Us", path: "/about" },
     { name: "Contact Us", path: "/contact" },
-    { name: "Shop", path: "/products" },
+    { name: "Shop", path: "/shop" },
+
   ];
 
   return (
@@ -63,11 +64,10 @@ export default function Header() {
             <Link
               key={index}
               href={link.path}
-              className={`px-3 py-1 rounded transition ${
-                pathname === link.path
+              className={`px-3 py-1 rounded transition ${pathname === link.path
                   ? "bg-orange-600 text-white"
                   : "hover:text-orange-600"
-              }`}
+                }`}
             >
               {link.name}
             </Link>
@@ -102,11 +102,10 @@ export default function Header() {
                 key={index}
                 href={link.path}
                 onClick={() => setMobileMenu(false)}
-                className={`px-3 py-2 rounded-md transition ${
-                  pathname === link.path
+                className={`px-3 py-2 rounded-md transition ${pathname === link.path
                     ? "bg-orange-500 text-white"
                     : "text-gray-700 hover:bg-orange-100"
-                }`}
+                  }`}
               >
                 {link.name}
               </Link>

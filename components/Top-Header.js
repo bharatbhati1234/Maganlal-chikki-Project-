@@ -3,6 +3,11 @@
 // Top Header ------------------------------------------------------------------------------
 
 "use client";
+
+import { useSelector } from "react-redux";
+
+
+
 import { useState } from "react";
 import Link from "next/link";
 import { ShoppingCart, Heart, GitCompare } from "lucide-react";
@@ -10,6 +15,10 @@ import { ShoppingCart, Heart, GitCompare } from "lucide-react";
 export default function TopHeader() {
   const [category, setCategory] = useState("");
   const [search, setSearch] = useState("");
+
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  const wishlistItems = useSelector((state) => state.wishlist.wishlistItems);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -75,21 +84,29 @@ export default function TopHeader() {
           </div>
 
           {/* Wishlist */}
-          <div className="flex items-center gap-1 cursor-pointer hover:text-orange-600">
-            <Heart size={20} />
-            <span className="hidden sm:block text-sm">Wishlist</span>
-          </div>
+          <Link href="/wishlist" className="relative">
+
+            <Heart size={22} />
+
+            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 rounded-full">
+
+              {wishlistItems.length}
+
+            </span>
+
+          </Link>
 
           {/* Cart */}
-          <div className="relative cursor-pointer">
+          <Link href="/cart" className="relative cursor-pointer">
             <div className="flex items-center gap-1 hover:text-orange-600">
               <ShoppingCart size={22} />
               <span className="hidden sm:block text-sm">Cart</span>
             </div>
+
             <span className="absolute -top-2 -right-3 bg-orange-600 text-white text-xs px-2 py-0.5 rounded-full">
-              0
+              {cartItems.length}
             </span>
-          </div>
+          </Link>
 
         </div>
       </div>
