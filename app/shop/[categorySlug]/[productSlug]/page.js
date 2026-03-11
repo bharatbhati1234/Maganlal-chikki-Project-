@@ -1,25 +1,23 @@
-
-
 // Single Product Page ------------------------------------------------------------------------
 
 import AddToCartButton from "@/components/AddToCartButton";
-
 import AddToWishlistButton from "@/components/AddToWishlistButton";
-
 import { getProductsbyCategory } from "@/libs/api";
-
 
 export default async function ProductDetail({ params }) {
 
-  const { category, product } = await params;
+  const { categorySlug, productSlug } = await params;   // ⭐ Next.js 16 me await required
 
-  const categoryId = category.split("-").pop();
-  const productId = product.split("-").pop();
+  if (!categorySlug || !productSlug) {
+    return <div>Invalid URL</div>;
+  }
+
+  const categoryId = categorySlug.split("-").pop();
+  const productId = productSlug.split("-").pop();
 
   const products = await getProductsbyCategory(categoryId);
 
   const singleProduct = products.find((item) => item.id == productId);
-  console.log(singleProduct)
 
   if (!singleProduct) {
     return <div>Product Not Found</div>;
@@ -41,23 +39,22 @@ export default async function ProductDetail({ params }) {
       <div className="space-y-4">
 
         <h1 className="text-3xl font-bold">
-          {singleProduct.title} - {singleProduct.id}
+          {singleProduct.title}
         </h1>
+
         <p className="text-gray-600">
           {singleProduct.small_description}
         </p>
-
 
         <p className="text-gray-600">
           {singleProduct.full_description}
         </p>
 
-         <p className="text-red-600 text-2xl font-semibold">
+        <p className="text-red-600 text-2xl font-semibold">
           ₹ {singleProduct.price}
         </p>
 
-             <AddToCartButton product={singleProduct} />      
-             
+        <AddToCartButton product={singleProduct} />
 
       </div>
 
