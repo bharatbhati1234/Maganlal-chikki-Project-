@@ -4,10 +4,16 @@ import PageBanner from "@/components/PageBanner";
 import { getAbout } from "@/libs/api";
 import Image from "next/image";
 
+
+export const metadata = {
+  title: "About",
+};
+
 export default async function About() {
 
   const data = await getAbout();
   const about = data?.[0];
+  
 
   return (
     <>

@@ -4,6 +4,11 @@ import PageBanner from "@/components/PageBanner";
 import { Suspense } from "react";
 
 
+export const metadata = {
+  title: "Shop",
+};
+
+
 export default async function Shop() {
 
   return (

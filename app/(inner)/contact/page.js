@@ -5,6 +5,10 @@
 
 import PageBanner from "@/components/PageBanner";
 
+export const metadata = {
+  title: "About",
+};
+
 export default function Contact() {
   return (
     <>
