@@ -1,5 +1,3 @@
-// Header page ----------------------------------------------------------------------
-
 "use client";
 
 import { useState } from "react";
@@ -14,7 +12,6 @@ export default function Header() {
   const pathname = usePathname();
 
   const departments = [
-    "Diwali Hamper",
     "Chikki",
     "Dry Fruit Roll",
     "Fudge",
@@ -26,7 +23,6 @@ export default function Header() {
     { name: "About Us", path: "/about" },
     { name: "Contact Us", path: "/contact" },
     { name: "Shop", path: "/shop" },
-
   ];
 
   return (
@@ -48,7 +44,9 @@ export default function Header() {
               {departments.map((item, index) => (
                 <Link
                   key={index}
-                  href={`/products?category=${item.toLowerCase()}`}
+                  href={`/shop?category=${item.toLowerCase()}`}
+                    onClick={() => setShowDepartments(false)}
+
                   className="block px-4 py-2 hover:bg-orange-50"
                 >
                   {item}
@@ -64,10 +62,11 @@ export default function Header() {
             <Link
               key={index}
               href={link.path}
-              className={`px-3 py-1 rounded transition ${pathname === link.path
+              className={`px-3 py-1 rounded transition ${
+                pathname === link.path
                   ? "bg-orange-600 text-white"
                   : "hover:text-orange-600"
-                }`}
+              }`}
             >
               {link.name}
             </Link>
@@ -102,10 +101,11 @@ export default function Header() {
                 key={index}
                 href={link.path}
                 onClick={() => setMobileMenu(false)}
-                className={`px-3 py-2 rounded-md transition ${pathname === link.path
+                className={`px-3 py-2 rounded-md transition ${
+                  pathname === link.path
                     ? "bg-orange-500 text-white"
                     : "text-gray-700 hover:bg-orange-100"
-                  }`}
+                }`}
               >
                 {link.name}
               </Link>
