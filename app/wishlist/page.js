@@ -50,7 +50,7 @@ export default function WishlistPage() {
     if (wishlistItems.length === 0) {
         return (
 
-            <div className="text-center py-20 text-xl text-gray-500">
+            <div className="text-center py-16 md:py-20 text-lg md:text-xl text-gray-500">
 
                 ❤️ Wishlist is empty
 
@@ -61,36 +61,36 @@ export default function WishlistPage() {
 
     return (
 
-        <div className="max-w-6xl mx-auto p-10 grid md:grid-cols-3 gap-6">
+        <div className="max-w-6xl mx-auto p-4 md:p-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
             {wishlistItems.map((item) => (
-                <div key={item.id} className="border p-4 rounded-lg">
+                <div key={item.id} className="border p-4 rounded-lg bg-white shadow-sm">
 
                     <img
                         src={item.images?.[0]}
-                        className="w-full h-40 object-cover"
+                        className="w-full h-44 sm:h-40 object-cover rounded"
                     />
 
-                    <h3 className="mt-3 font-semibold">
+                    <h3 className="mt-3 font-semibold line-clamp-2">
                         {item.title}
                     </h3>
 
-                    <p className="text-red-500">
+                    <p className="text-red-500 font-semibold">
                         ₹ {item.price}
                     </p>
 
-                    <div className="flex gap-3 mt-4">
+                    <div className="flex flex-col sm:flex-row gap-3 mt-4">
 
                         <button
                             onClick={() => handleAddToCart(item)}
-                            className="bg-green-500 text-white px-4 py-2 rounded"
+                            className="bg-green-500 text-white px-4 py-2 rounded w-full"
                         >
                             Add to Cart
                         </button>
 
                         <button
                             onClick={() => handleRemove(item)}
-                            className="bg-red-500 text-white px-4 py-2 rounded"
+                            className="bg-red-500 text-white px-4 py-2 rounded w-full"
                         >
                             Remove
                         </button>

@@ -103,34 +103,30 @@ export default function CategorySectionsClient({ data }) {
                                         />
 
                                         {/* Overlay */}
-                                        <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-end pr-3">
-                                            <div className="flex flex-col gap-3">
-                                                {/* View */}
-                                                <Link
-                                                    href={`/shop/${createSlug(category.cat_name)}-${category.id}/${createSlug(item.title)}-${item.id}`}
-                                                    className="bg-white p-2 rounded-full shadow cursor-pointer hover:bg-red-600 hover:text-white transition"
-                                                >
-                                                    <Eye size={18} />
-                                                </Link>
+                                        <div className="absolute inset-0 bg-black/30 md:opacity-0 opacity-100 md:group-hover:opacity-100 transition flex items-center justify-end pr-3">                                            <div className="flex flex-col gap-3">
+                                            {/* View */}
+                                            <Link
+                                                href={`/shop/${createSlug(category.cat_name)}-${category.id}/${createSlug(item.title)}-${item.id}`}
+                                                className="bg-white p-2 rounded-full shadow cursor-pointer hover:bg-red-600 hover:text-white active:bg-red-600 active:text-white transition"                                            >
+                                                <Eye size={18} />
+                                            </Link>
 
-                                                {/* Wishlist */}
-                                                <button
-                                                    onClick={() => handleAddToWishlist(item)}
-                                                    className="bg-white p-2 rounded-full shadow cursor-pointer hover:bg-red-600 hover:text-white transition"
-                                                >
+                                            {/* Wishlist */}
+                                            <button
+                                                onClick={() => handleAddToWishlist(item)}
+                                                className="bg-white p-2 rounded-full shadow cursor-pointer hover:bg-red-600 hover:text-white active:bg-red-600 active:text-white transition"                                            >
 
-                                                    <Heart size={18} />
+                                                <Heart size={18} />
 
-                                                </button>
+                                            </button>
 
-                                                {/* Add to Cart */}
-                                                <button
-                                                    onClick={() => handleAddToCart(item)}
-                                                    className="bg-white p-2 rounded-full shadow cursor-pointer hover:bg-red-600 hover:text-white transition"
-                                                >
-                                                    <ShoppingBagIcon size={18} />
-                                                </button>
-                                            </div>
+                                            {/* Add to Cart */}
+                                            <button
+                                                onClick={() => handleAddToCart(item)}
+                                                className="bg-white p-2 rounded-full shadow cursor-pointer hover:bg-red-600 hover:text-white active:bg-red-600 active:text-white transition"                                            >
+                                                <ShoppingBagIcon size={18} />
+                                            </button>
+                                        </div>
                                         </div>
                                     </div>
 
